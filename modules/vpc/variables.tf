@@ -12,6 +12,6 @@ variable "vpc_id" {
 }
 
 variable "subnet_cidr" {
-    default = ""
+    default = "10.0.0.0/24"
 }
 
