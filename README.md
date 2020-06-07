@@ -10,3 +10,8 @@ Go into dev/ folder and run:
 Run ```terraform plan``` to check changes before apply.
 
 Run ```terraform apply``` to deploy your changes into your AWS account.
+
+## TO DO:
+
+- [] Build project with different gitHub repo
+- [] ApiGateway module with lambda
