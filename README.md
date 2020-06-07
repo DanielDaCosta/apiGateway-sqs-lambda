@@ -13,5 +13,5 @@ Run ```terraform apply``` to deploy your changes into your AWS account.
 
 ## TO DO:
 
-- [] Build project with different gitHub repo
-- [] ApiGateway module with lambda
+- [ ] Build project with different gitHub repo
+- [ ] ApiGateway module with lambda
