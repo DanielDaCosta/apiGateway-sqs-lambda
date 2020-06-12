@@ -1,5 +1,7 @@
 # aws-terraform
-Repository for mananging modules with Terraform in AWS
+Repository for mananging modules with Terraform in AWS. 
+
+The goal of this repo is to build Terraform modules for users
 
 ## Usage
 
