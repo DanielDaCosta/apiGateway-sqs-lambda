@@ -12,7 +12,7 @@ module "my_vpc" {
 }
 
 module "my_ec2" {
-  source = "../modules/ec2"
+  source = "github.com/DanielDaCosta/aws-terraform-project-1.git"
   ec2_count = 1
   ami_id = "ami-01d025118d8e760db"
   instance_type = "t2.micro"
