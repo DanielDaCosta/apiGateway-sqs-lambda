@@ -1,5 +1,8 @@
-# aws-terraform
-Repository for mananging modules with Terraform in AWS. 
+# ApiGateway-SQS-Lambda integration
+Repository for building the following pipeline: 
+- API Gateway
+- SQS
+- Lambda
 
 The goal of this repo is to build Terraform modules for users
 
