@@ -33,8 +33,8 @@ resource "aws_api_gateway_method" "method_form_score" {
 
 resource "aws_api_gateway_integration" "api" {
   rest_api_id             = aws_api_gateway_rest_api.api.id
-  resource_id             = aws_api_gateway_resource.form_score_proxy.id
-  http_method             = "POST"
+  resource_id             = aws_api_gateway_resource.form_score.id
+  http_method             = aws_api_gateway_method.method_form_score.http_method
   type                    = "AWS"
   integration_http_method = "POST"
   credentials             = "${aws_iam_role.api.arn}"
@@ -47,4 +47,13 @@ resource "aws_api_gateway_integration" "api" {
   request_templates = {
     "application/json" = "Action=SendMessage&MessageBody=$input.body"
   }
+}
+
+resource "aws_api_gateway_deployment" "api" {
+  rest_api_id = "${aws_api_gateway_rest_api.api.id}"
+  stage_name  = "main"
+
+  depends_on = [
+    "aws_api_gateway_integration.api",
+  ]
 }
