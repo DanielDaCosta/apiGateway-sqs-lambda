@@ -37,7 +37,7 @@ resource "aws_api_gateway_integration" "api" {
   http_method             = aws_api_gateway_method.method_form_score.http_method
   type                    = "AWS"
   integration_http_method = "POST"
-  credentials             = "${aws_iam_role.api.arn}"
+  credentials             = aws_iam_role.apiSQS.arn
   uri                     = "arn:aws:apigateway:${var.region}:sqs:path/${aws_sqs_queue.queue.name}"
 
   request_parameters = {
