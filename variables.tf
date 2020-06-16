@@ -8,8 +8,8 @@ variable "name" {
     type        = string
 }
 
-variable {
-    description = "Aplication Name - ENV"
+locals {
+    description = "Aplication Name"
     app_name = "${var.name}-${var.environment}"
 }
 

@@ -11,7 +11,7 @@ resource "aws_api_gateway_resource" "form_score" {
 
 resource "aws_api_gateway_request_validator" "validator_query" {
   name                        = "queryValidator"
-  rest_api_id                 = data.aws_api_gateway_rest_api.apiGateway.id
+  rest_api_id                 = aws_api_gateway_rest_api.apiGateway.id
   validate_request_body       = false
   validate_request_parameters = true
 }
@@ -32,7 +32,7 @@ resource "aws_api_gateway_method" "method_form_score" {
 
 
 resource "aws_api_gateway_integration" "api" {
-  rest_api_id             = aws_api_gateway_rest_api.api.id
+  rest_api_id             = aws_api_gateway_rest_api.apiGateway.id
   resource_id             = aws_api_gateway_resource.form_score.id
   http_method             = aws_api_gateway_method.method_form_score.http_method
   type                    = "AWS"
@@ -54,7 +54,7 @@ resource "aws_api_gateway_integration" "api" {
 }
 
 resource "aws_api_gateway_deployment" "api" {
-  rest_api_id = "${aws_api_gateway_rest_api.apiGateway.id}"
+  rest_api_id = aws_api_gateway_rest_api.apiGateway.id
   stage_name  = var.environment
 
   depends_on = [

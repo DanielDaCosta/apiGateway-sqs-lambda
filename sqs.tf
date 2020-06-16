@@ -5,8 +5,8 @@ resource "aws_sqs_queue" "queue" {
   message_retention_seconds = 86400
   receive_wait_time_seconds = 10
 
-  tags {
-    Product = var.app_name
+  tags = {
+    Product = local.app_name
   }
 }
 
@@ -14,7 +14,7 @@ resource "aws_sqs_queue" "queue" {
 # Trigger lambda on message to SQS
 resource "aws_lambda_event_source_mapping" "event_source_mapping" {
   batch_size       = 1
-  event_source_arn = "${aws_sqs_queue.queue.arn}"
+  event_source_arn =  aws_sqs_queue.queue.arn
   enabled          = true
-  function_name    = "${aws_lambda_function.lambda_sqs.arn}"
+  function_name    =  aws_lambda_function.lambda_sqs.arn
 }
