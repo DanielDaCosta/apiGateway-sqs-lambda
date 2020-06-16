@@ -1,0 +1,23 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+          "Action": [
+              "sqs:DeleteMessage",
+              "sqs:ReceiveMessage",
+              "sqs:GetQueueAttributes"
+          ],
+          "Resource": "${sqs_arn}",
+          "Effect": "Allow"
+      },
+      {
+        "Action": [
+            "logs:CreateLogGroup",
+            "logs:CreateLogStream",
+            "logs:PutLogEvents"
+        ],
+        "Resource": "arn:aws:logs:*:*:*",
+        "Effect": "Allow"
+      }
+    ]
+  }
