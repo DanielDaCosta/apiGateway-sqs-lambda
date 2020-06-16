@@ -47,13 +47,17 @@ resource "aws_api_gateway_integration" "api" {
   request_templates = {
     "application/json" = "Action=SendMessage&MessageBody=$input.body"
   }
+
+  depends_on = [
+    aws_iam_role_policy_attachment.api_exec_role
+  ]
 }
 
 resource "aws_api_gateway_deployment" "api" {
-  rest_api_id = "${aws_api_gateway_rest_api.api.id}"
-  stage_name  = "main"
+  rest_api_id = "${aws_api_gateway_rest_api.apiGateway.id}"
+  stage_name  = var.environment
 
   depends_on = [
-    "aws_api_gateway_integration.api",
+    aws_api_gateway_integration.api,
   ]
 }

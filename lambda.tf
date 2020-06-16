@@ -15,6 +15,10 @@ resource "aws_lambda_function" "lambda_sqs" {
 
   timeout          = 30
   memory_size      = 128
+
+  depends_on = [
+    aws_iam_role_policy_attachment.lambda_role_policy
+  ]
 }
 
 resource "aws_lambda_permission" "allows_sqs_to_trigger_lambda" {
