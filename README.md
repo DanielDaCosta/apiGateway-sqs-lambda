@@ -179,7 +179,7 @@ resource "aws_api_gateway_method" "method_form_score" {
   request_validator_id = aws_api_gateway_request_validator.validator_query.id
 }
 ```
-Defining an ApiGateway integration with SQS. A request_template was added in order to pass the Method, Body, QueryParameters and path Parameters in the SQS message.
+Defining an ApiGateway integration with SQS. A *request_template* was added in order to pass the Method, Body, QueryParameters and path Parameters in the SQS message.
 
 ```
 resource "aws_api_gateway_integration" "api" {
