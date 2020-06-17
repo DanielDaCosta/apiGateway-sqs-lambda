@@ -1,22 +1,46 @@
-# ApiGateway-SQS-Lambda integration
-Repository for building the following pipeline: 
-- API Gateway
-- SQS
-- Lambda
+# Terraform ApiGateway-SQS-Lambda integration
+Example of a terraform script to setup an API Gateway endpoint that takes records and puts them into an SQS queue that will trigger an Event Source for AWS Lambda.
 
-The goal of this repo is to build Terraform modules for users
+## Getting Started
+
+This project follows the following file structure:
+
+```
+├── LICENSE
+├── README.md
+├── apiGateway.tf
+├── iam.tf
+├── lambda: folder for lambda code
+│   ├── handler.py
+│   └── sqs-integration-dev-lambda.zip
+├── lambda.tf
+├── main.tf
+├── policies: all policies created
+│   ├── api-gateway-permission.json
+│   └── lambda-permission.json
+├── sqs.tf
+├── terraform.tfstate
+├── terraform.tfstate.backup
+├── variables.tf: defining variables that will be used inside terraform templates
+└── variables.tfvars: input variables
+```
 
 ## Usage
+Run ```terraform init``` to initialize the working directory containing Terraform configuration files.
 
-Go into dev/ folder and run:
+Run ```terraform apply -var-file="variables.tfvars"``` for applying environment variables.
 
-```terraform init```
+## Details
 
-Run ```terraform plan``` to check changes before apply.
 
-Run ```terraform apply``` to deploy your changes into your AWS account.
 
-Run ```terraform apply -var-file="name_of_file.tfvars"``` for applying environment variables.
+
+## License
+This project is licensed under the MIT License - see the LICENSE.md file for details
+
+## Acknowlegments
+- [Andrew Loesch GitHub Gist](https://gist.github.com/afloesch/dc7d8865eeb91100648330a46967be25)
+- https://www.terraform.io
 
 ## TO DO:
 
