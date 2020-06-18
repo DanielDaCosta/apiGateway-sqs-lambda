@@ -313,5 +313,6 @@ resource "aws_lambda_event_source_mapping" "event_source_mapping" {
 This project is licensed under the MIT License - see the LICENSE.md file for details
 
 ## Acknowlegments
-- [Andrew Loesch GitHub Gist](https://gist.github.com/afloesch/dc7d8865eeb91100648330a46967be25)
+
+- Special thanks to [Andrew Loesch GitHub Gist](https://gist.github.com/afloesch/dc7d8865eeb91100648330a46967be25)
 - https://www.terraform.io
