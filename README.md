@@ -316,3 +316,4 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 
 - Special thanks to [Andrew Loesch GitHub Gist](https://gist.github.com/afloesch/dc7d8865eeb91100648330a46967be25)
 - https://www.terraform.io
+- https://medium.com/appetite-for-cloud-formation/setup-lambda-to-event-source-from-sqs-in-terraform-6187c5ac2df1
