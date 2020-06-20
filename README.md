@@ -242,7 +242,7 @@ resource "aws_api_gateway_integration_response" "http200" {
     ]
 }
  ```
- Api Gateway deployment. A redeployment trigger was added. It will trigger an immediate redeployment when resource chagnes happens.
+ Api Gateway deployment. A redeployment trigger was added. It will trigger an immediate redeployment when resource changes happen.
  ```
  resource "aws_api_gateway_deployment" "api" {
   rest_api_id = aws_api_gateway_rest_api.apiGateway.id
