@@ -1,7 +1,7 @@
 # Terraform ApiGateway-SQS-Lambda integration
 Example of a terraform script to setup an API Gateway endpoint that takes records and puts them into an SQS queue that will trigger an Event Source for AWS Lambda.
 
-For more informations check the [Medium post](https://medium.com/@danieldacosta_75030/building-an-apigateway-sqs-lambda-integration-using-terraform-5617cc0408ad)!
+For more informations check the [Medium post](https://medium.com/@danieldacosta_75030/building-an-apigateway-sqs-lambda-integration-using-terraform-5617cc0408ad).
 
 ## Getting Started
 
