@@ -314,7 +314,7 @@ resource "aws_lambda_event_source_mapping" "event_source_mapping" {
 ```
 
 ## License
-This project is licensed under the MIT License - see the LICENSE.md file for details
+This project is licensed under the MIT License - see LICENSE.md file for details
 
 ## References & Acknowlegments
 
