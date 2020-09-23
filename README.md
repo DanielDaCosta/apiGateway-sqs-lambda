@@ -32,6 +32,8 @@ This project follows the following file structure:
 ## Usage
 Run ```terraform init``` to initialize the working directory containing Terraform configuration files.
 
+For good practices, you should confirm your changes using ```terraform plan -var-file="variables.tfvars"```
+
 Run ```terraform apply -var-file="variables.tfvars"``` for applying environment variables.
 
 ## Details
