@@ -8,7 +8,6 @@ For more informations check the [Medium post](https://medium.com/@danieldacosta_
 ## Getting Started
 
 This project follows the following file structure:
-
 ```
 ├── LICENSE
 ├── README.md
