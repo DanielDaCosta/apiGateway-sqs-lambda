@@ -13,7 +13,7 @@ resource "aws_api_gateway_request_validator" "validator_query" {
   name                        = "queryValidator"
   rest_api_id                 = aws_api_gateway_rest_api.apiGateway.id
   validate_request_body       = true
-  validate_request_parameters = false
+  validate_request_parameters = true
 }
 
 resource "aws_api_gateway_method" "method_form_score" {
@@ -144,7 +144,6 @@ resource "aws_api_gateway_deployment" "api" {
 
   # Redeploy when there are new updates
   triggers = {
-    # try to force this redeployment = true
     redeployment = sha1(join(",", list(
       jsonencode(aws_api_gateway_integration.api),
     )))
