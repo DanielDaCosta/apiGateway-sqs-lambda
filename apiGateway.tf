@@ -12,7 +12,7 @@ resource "aws_api_gateway_resource" "form_score" {
 resource "aws_api_gateway_request_validator" "validator_query" {
   name                        = "queryValidator"
   rest_api_id                 = aws_api_gateway_rest_api.apiGateway.id
-  validate_request_body       = false
+  validate_request_body       = true
   validate_request_parameters = true
 }
 
@@ -21,15 +21,58 @@ resource "aws_api_gateway_method" "method_form_score" {
     resource_id   = aws_api_gateway_resource.form_score.id
     http_method   = "POST"
     authorization = "NONE"
+    api_key_required = true
 
+    request_models       = {
+       "application/json" = aws_api_gateway_model.my_model.name
+        }
     request_parameters = {
       "method.request.path.proxy"        = false
       "method.request.querystring.unity" = true
+      # example of validation: the above requires this in query string
+      # https://my-api/dev/form-score?unity=1
   }
 
   request_validator_id = aws_api_gateway_request_validator.validator_query.id
 }
 
+resource "aws_api_gateway_model" "my_model" {
+  rest_api_id  = aws_api_gateway_rest_api.apiGateway.id
+  name         = "validateBody"
+  description  = "a JSON schema"
+  content_type = "application/json"
+
+  schema = <<EOF
+  {
+  "$schema" : "http://json-schema.org/draft-04/schema#",
+  "title" : "validateTheBody",
+  "type" : "object",
+  "properties" : {
+    "message" : { "type" : "string" }
+  },
+  "required" :["message"]
+  }
+  EOF
+  }
+
+resource "aws_api_gateway_usage_plan" "myusageplan" {
+  name = "my_usage_plan"
+
+  api_stages {
+    api_id = aws_api_gateway_rest_api.apiGateway.id
+    stage  = aws_api_gateway_deployment.api.stage_name
+  }
+}
+
+resource "aws_api_gateway_api_key" "mykey" {
+  name = "my_key"
+}
+
+resource "aws_api_gateway_usage_plan_key" "main" {
+  key_id        = aws_api_gateway_api_key.mykey.id
+  key_type      = "API_KEY"
+  usage_plan_id = aws_api_gateway_usage_plan.myusageplan.id
+}
 
 resource "aws_api_gateway_integration" "api" {
   rest_api_id             = aws_api_gateway_rest_api.apiGateway.id
@@ -44,6 +87,7 @@ resource "aws_api_gateway_integration" "api" {
     "integration.request.header.Content-Type" = "'application/x-www-form-urlencoded'"
   }
 
+ 
   # Request Template for passing Method, Body, QueryParameters and PathParams to SQS messages
   request_templates = {
     "application/json" = <<EOF
