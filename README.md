@@ -6,7 +6,6 @@ When deployed, you'll have a public endpoint that will write to SQS with a Lambd
 For more informations check the Medium post [Building an ApiGateway-SQS-Lambda integration using Terraform](https://medium.com/@danieldacosta_75030/building-an-apigateway-sqs-lambda-integration-using-terraform-5617cc0408ad).
 
 ## Getting Started
-
 This project follows the following file structure:
 ```
 ├── LICENSE
